@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <style>
+      .containerContactUS {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+      .containerContactUS h2 {
+        text-align: center;
+      }
+      .containerContactUS label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .containerContactUS input,
+      .containerContactUS textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .containerContactUS button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .containerContactUS button:hover {
+        background-color: #218838;
+      }
+      .error {
+        color: red;
+      }
+      .success {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="containerContactUS">
+      <h2>Contact Us</h2>
+      <p id="successMessage" class="success"></p>
+      <p id="errorMessage" class="error"></p>
+      <form id="contactForm">
+        <div>
+          <label for="userName">Name:</label>
+          <input type="text" id="userName" name="userName" required />
+          <p id="errorUserName" class="error"></p>
+        </div>
+        <div>
+          <label for="email">Email ID (optional):</label>
+          <input type="email" id="email" name="email" />
+        </div>
+        <div>
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" required />
+          <p id="errorPhone" class="error"></p>
+        </div>
+        <div>
+          <label for="query">Query:</label>
+          <textarea id="query" name="query" required></textarea>
+          <p id="errorQuery" class="error"></p>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      const apiEndpoint = "https://dev.kiosk.farm/kisaan/companion/v1/query"; // Replace with your actual API endpoint
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          // Clear previous messages
+          document.getElementById("successMessage").textContent = "";
+          document.getElementById("errorMessage").textContent = "";
+          document.getElementById("errorUserName").textContent = "";
+          document.getElementById("errorPhone").textContent = "";
+          document.getElementById("errorQuery").textContent = "";
+
+          const formData = {
+            userName: document.getElementById("userName").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            phone: document.getElementById("phone").value.trim(),
+            query: document.getElementById("query").value.trim(),
+          };
+
+          // Validate form data
+          let hasError = false;
+
+          if (!formData.userName) {
+            document.getElementById("errorUserName").textContent =
+              "Name is required.";
+            hasError = true;
+          }
+          if (!formData.phone) {
+            document.getElementById("errorPhone").textContent =
+              "Phone number is required.";
+            hasError = true;
+          }
+          if (!formData.query) {
+            document.getElementById("errorQuery").textContent =
+              "Query is required.";
+            hasError = true;
+          }
+
+          if (hasError) return;
+
+          try {
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Authorization", "Basic NTAwNTYzMzpwYXNzd29yZA==");
+            myHeaders.append(
+              "Cookie",
+              "JSESSIONID=285383407CBD6CDAEB799ED3412518A2; JSESSIONID=4405D7272656CB1D97985EFF862A0A15"
+            );
+
+            const raw = JSON.stringify({
+              queryType: "PRODUCT test",
+              name: "testing",
+              email: "testmail.doe@example.com",
+              mobileNumber: "9934067890",
+            });
+
+            const requestOptions = {
+              method: "POST",
+              headers: myHeaders,
+              body: raw,
+              redirect: "follow",
+            };
+
+            const response = await fetch(`${apiEndpoint}`, requestOptions )
+
+            if (response.ok) {
+              document.getElementById("successMessage").textContent =
+                "Your request has been submitted successfully.";
+              document.getElementById("contactForm").reset();
+            } else {
+              const errorData = await response.json();
+              document.getElementById("errorMessage").textContent =
+                errorData.message || "Something went wrong. Please try again.";
+            }
+          } catch (error) {
+            console.error(error);
+            document.getElementById("errorMessage").textContent =
+              "Network error occurred. Please try again later.";
+          }
+        });
+    </script>
+  </body>
+</html>
