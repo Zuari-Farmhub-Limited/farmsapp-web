@@ -8,19 +8,21 @@
       .containerContactUS {
         max-width: 600px;
         margin: 0 auto;
-        padding: 20px;
         font-family: Arial, sans-serif;
       }
       .containerContactUS h2 {
         text-align: center;
+        margin: 2%;
       }
       .containerContactUS label {
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
+        font-size: 13px;
       }
       .containerContactUS input,
-      .containerContactUS textarea {
+      .containerContactUS textarea,
+      .containerContactUS select {
         width: 100%;
         padding: 10px;
         margin-bottom: 15px;
@@ -44,11 +46,33 @@
       .success {
         color: green;
       }
+      .header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .imgLogo {
+        width: 14%;
+        height: 10%;
+      }
+      .jaikisaanLogo {
+        width: 7%;
+        margin-right: 3%;
+      }
     </style>
   </head>
   <body>
+      <div class="header">
+        <img
+          src="./images/logos/farmsapp-logo.png"
+          alt="FarmsApp Logo"
+          class="imgLogo"
+        />
+        <img src="./images/jaikisaan-logo.png" class="jaikisaanLogo" />
+      </div>
     <div class="containerContactUS">
-      <h2>Contact Us</h2>
+      <h2 class="headerNameContact">Contact Us</h2>
       <p id="successMessage" class="success"></p>
       <p id="errorMessage" class="error"></p>
       <form id="contactForm">
@@ -67,6 +91,17 @@
           <p id="errorPhone" class="error"></p>
         </div>
         <div>
+          <label for="queryType">Query Type:</label>
+          <select id="queryType" name="queryType" required>
+            <option value="">Select a query type</option>
+            <option value="1">Product Enquiry</option>
+            <option value="2">Raise Dispute</option>
+            <option value="3">Order Details</option>
+            <option value="4">Account Deletion</option>
+          </select>
+          <p id="errorQueryType" class="error"></p>
+        </div>
+        <div>
           <label for="query">Query:</label>
           <textarea id="query" name="query" required></textarea>
           <p id="errorQuery" class="error"></p>
@@ -76,88 +111,91 @@
     </div>
 
     <script>
-      const apiEndpoint = "https://dev.kiosk.farm/kisaan/companion/v1/query"; // Replace with your actual API endpoint
+      const apiEndpoint = "https://dev.kiosk.farm/kisaan/companion/v1/query";
 
       document
-        .getElementById("contactForm")
-        .addEventListener("submit", async function (event) {
-          event.preventDefault();
+  .getElementById("contactForm")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-          // Clear previous messages
-          document.getElementById("successMessage").textContent = "";
-          document.getElementById("errorMessage").textContent = "";
-          document.getElementById("errorUserName").textContent = "";
-          document.getElementById("errorPhone").textContent = "";
-          document.getElementById("errorQuery").textContent = "";
+    // Clear previous messages
+    document.getElementById("successMessage").textContent = "";
+    document.getElementById("errorMessage").textContent = "";
+    document.getElementById("errorUserName").textContent = "";
+    document.getElementById("errorPhone").textContent = "";
+    document.getElementById("errorQueryType").textContent = "";
 
-          const formData = {
-            userName: document.getElementById("userName").value.trim(),
-            email: document.getElementById("email").value.trim(),
-            phone: document.getElementById("phone").value.trim(),
-            query: document.getElementById("query").value.trim(),
-          };
+    const formData = {
+      userName: document.getElementById("userName").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      queryType: parseInt(document.getElementById("queryType").value, 10), // Parse queryType as a number
+      query: document.getElementById("query").value.trim(),
+    };
 
-          // Validate form data
-          let hasError = false;
+    // Validate form data
+    let hasError = false;
 
-          if (!formData.userName) {
-            document.getElementById("errorUserName").textContent =
-              "Name is required.";
-            hasError = true;
-          }
-          if (!formData.phone) {
-            document.getElementById("errorPhone").textContent =
-              "Phone number is required.";
-            hasError = true;
-          }
-          if (!formData.query) {
-            document.getElementById("errorQuery").textContent =
-              "Query is required.";
-            hasError = true;
-          }
+    if (!formData.userName) {
+      document.getElementById("errorUserName").textContent =
+        "Name is required.";
+      hasError = true;
+    }
+    if (!formData.phone) {
+      document.getElementById("errorPhone").textContent =
+        "Phone number is required.";
+      hasError = true;
+    }
+    if (isNaN(formData.queryType)) {
+      document.getElementById("errorQueryType").textContent =
+        "Query type is required and must be a number.";
+      hasError = true;
+    }
 
-          if (hasError) return;
+    if (hasError) return;
 
-          try {
-            const myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            myHeaders.append("Authorization", "Basic NTAwNTYzMzpwYXNzd29yZA==");
-            myHeaders.append(
-              "Cookie",
-              "JSESSIONID=285383407CBD6CDAEB799ED3412518A2; JSESSIONID=4405D7272656CB1D97985EFF862A0A15"
-            );
+    try {
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", "Basic NTAwNTYzMzpwYXNzd29yZA==");
+      myHeaders.append(
+        "Cookie",
+        "JSESSIONID=285383407CBD6CDAEB799ED3412518A2; JSESSIONID=4405D7272656CB1D97985EFF862A0A15"
+      );
 
-            const raw = JSON.stringify({
-              queryType: "PRODUCT test",
-              name: "testing",
-              email: "testmail.doe@example.com",
-              mobileNumber: "9934067890",
-            });
+      const raw = JSON.stringify({
+        queryType: formData.queryType,
+        name: formData.userName,
+        email: formData.email,
+        mobileNumber: formData.phone,
+        query: formData.query || null, // Allow query to be null if empty
+      });
 
-            const requestOptions = {
-              method: "POST",
-              headers: myHeaders,
-              body: raw,
-              redirect: "follow",
-            };
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
 
-            const response = await fetch(`${apiEndpoint}`, requestOptions )
+      const response = await fetch(apiEndpoint, requestOptions);
 
-            if (response.ok) {
-              document.getElementById("successMessage").textContent =
-                "Your request has been submitted successfully.";
-              document.getElementById("contactForm").reset();
-            } else {
-              const errorData = await response.json();
-              document.getElementById("errorMessage").textContent =
-                errorData.message || "Something went wrong. Please try again.";
-            }
-          } catch (error) {
-            console.error(error);
-            document.getElementById("errorMessage").textContent =
-              "Network error occurred. Please try again later.";
-          }
-        });
+      if (response.ok) {
+        document.getElementById("successMessage").textContent =
+          "Your request has been submitted successfully.";
+        document.getElementById("contactForm").reset();
+      } else {
+        const errorData = await response.json();
+        document.getElementById("errorMessage").textContent =
+          errorData.message || "Something went wrong. Please try again.";
+      }
+    } catch (error) {
+      console.error(error);
+      document.getElementById("errorMessage").textContent =
+        "Network error occurred. Please try again later.";
+    }
+  });
+
     </script>
   </body>
 </html>
