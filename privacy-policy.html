@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy and Policy</title>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link rel="icon" type="image/png" href="farmsapp-fav.png">
+    <link rel="icon" type="image/png" href="images/farmsappfav.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -15,6 +15,176 @@
         rel="stylesheet">
         <script src='main.js'></script>
     <style>
+         @media (max-width: 800px) {
+        .text {
+          font-size: 0.5rem;
+        }
+        .section {
+          margin-left: 1% !important;
+          margin-right: 1% !important;
+        }
+        .dataDefImg {
+          width: 20px !important;
+          height: 20px !important;
+        }
+        .service {
+          display: block !important;
+          flex-direction: initial !important;
+          gap: 0px !important;
+          margin-right: 1% !important;
+          margin-left: 1% !important;
+        }
+        .service1 {
+          display: flex;
+        }
+        .service2 {
+          display: flex;
+        }
+        .service2Sec {
+          align-self: flex-end;
+        }
+        .service img {
+          height: 200px !important;
+        }
+        .subSec {
+          display: block !important;
+        }
+        .subSecImg {
+          width: 100% !important;
+        }
+        .grid-container {
+          grid-template-columns: 0 !important;
+          grid-template-rows: 130px 118px 150px 99px 126px !important;
+          margin-left: 1% !important;
+          justify-content: center !important;
+        }
+        .footSec {
+          display: block !important;
+        }
+        div div div div:nth-child(2) p {
+          font-size: 12px !important;
+        }
+        div div div div p {
+          font-size: 12px !important;
+        }
+        .footer-section {
+          height: 110px !important;
+          justify-content: center !important;
+          align-items: center !important;
+        }
+        .footDiv {
+          padding: 0px !important;
+        }
+        div div div div:nth-child(2) {
+          padding-left: 0% !important;
+        }
+        .footer-data {
+          align-items: center !important;
+        }
+      }
+
+      .footer-section {
+        display: flex;
+        flex-direction: column;
+        color: #ffffff;
+        flex-wrap: wrap-reverse;
+        height: 200px;
+        justify-content: flex-end;
+        align-items: flex-end;
+        margin-left: 0px;
+        padding-left: 0px;
+      }
+
+      .footer-section h3,
+      div {
+        margin-bottom: 0px;
+        /* margin-left: 13px; */
+      }
+
+      .footer-section:nth-child(1) > img {
+        width: 35%;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .footer-section > * {
+        margin-top: 0px;
+      }
+
+      .footer-data {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .footer-data img {
+        width: 20px;
+        height: 20px;
+        margin-top: 3px;
+      }
+
+      .footer-data > p:nth-of-type(1) {
+        color: #ffffff;
+        text-align: left;
+        margin-top: 0px;
+        padding-top: 0px;
+      }
+
+      .footer-section:nth-child(2) {
+        margin: 0px;
+        padding: 0px;
+        /* margin-left: 300px; */
+      }
+
+      .footer-section:nth-child(2) > div > img {
+        padding-right: 3px;
+        width: 20px;
+        height: 20px;
+      }
+
+      .footer-section:nth-child(2) > div > p {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .footer-section:nth-child(1) > div > p {
+        margin: 0px;
+        padding: 0px;
+      }
+      .footer-data > p > a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+      .footDiv {
+        background-color: #283646;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        padding: 50px;
+      }
+      .footSec {
+        display: flex;
+        flex-direction: row;
+      }
+      .footHr {
+        flex: 0.01;
+      }
+      hr {
+    width: 70%;
+    background-color: #cdcdcd;
+    padding: 1px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 50px;
+    border-style: none;
+}
+
+      div div div div p {
+    color: #3d3d3d;
+    font-size: x-large;
+    text-align: left;
+    margin-top: 0px;
+    padding-top: 0px;
+}
         .policy-container {
             max-width: 800px;
             margin: 20px auto;
@@ -47,15 +217,33 @@
         .policy-container ul li {
             margin-bottom: 10px;
         }
+        .header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .imgLogo {
+        width: 20%;
+        /* margin-left: 3%; */
+      }
+      .jaikisaanLogo {
+        width: 10%;
+        margin-right: 3%;
+      }
     </style>
 </head>
 
 <body>
-    <div style="width: 100%; display: flex; flex-direction: row;justify-content: space-between;">
-        <img src="./images/logos/farmsapp-logo.png" alt="FarmsApp Logo" style="width: 20%;margin-left: 3%;">
-        <img src="./images/jaikisaan-logo.png" style="width: 10%;margin-right: 3%;">
-    </div>
-    <div style="padding: 20px; text-align: left; font-family: Nunito Sans, sans-serif">
+    <div class="header">
+        <img
+          src="./images/logos/farmsapp-logo.png"
+          alt="FarmsApp Logo"
+          class="imgLogo"
+        />
+        <img src="./images/jaikisaan-logo.png" class="jaikisaanLogo" />
+      </div>
+    <div style="padding: 0px; text-align: left; font-family: Nunito Sans, sans-serif">
         <div class="policy-container">
             <h1 style="text-align: center">Privacy and Policy</h1>
             <p><strong>Effective Date: 1st April 2024</strong></p>
@@ -129,8 +317,58 @@
             style="background-color: #f2f2f2; height: 100px; border-radius:20px; margin: 50px; padding: 20px; text-align: center;">
             <a href="index.html" style="text-decoration: none; color: #008C44;">Go Back to Home</a>
 
-            <div>In case of any query please reach us on <a>support.farmsapp@adventz.com </a></div>
+            <div>In case of any query please reach us on <a href="mailto:support.farmsapp@adventz.com">support.farmsapp@adventz.com </a></div>
         </div>
+
+        
+    <div class="footDiv">
+        <div class="footSec">
+          <div class="footer-section">
+            <img src="./images/farmsapp.png" style="cursor: pointer;" onclick="window.location.href='index.html';" />
+            <h3>Zuari Farmhub Limited</h3>
+            <div class="footer-data">
+              <img src="./images/location.png" />
+              <p>
+                Prestige Ferozes, 3rd Floor, No. 74, Cunningham Road, Bengaluru -
+                560052
+              </p>
+            </div>
+          </div>
+  
+          <div class="footer-section">
+            <div class="footer-data">
+              <img src="./images/phone.png" />
+              <p>+91 80 6985 7000</p>
+            </div>
+            <div class="footer-data">
+              <img src="./images/message.png" />
+              <p>support.farmsapp@adventz.com</p>
+            </div>
+            <div class="footer-data">
+              <img src="./images/browser.png" />
+              <p>
+                <a href="https://zuarifarmhub.com/overview" target="_blank"
+                  >https://zuarifarmhub.com/overview
+                </a>
+              </p>
+            </div>
+            <div class="footer-data">
+              <p>
+                <a href="privacy-policy.html" target="_blank"
+                  >Privacy and Policy
+                </a>
+              </p>
+            </div>
+            <div class="footer-data">
+              <p>
+                <a href="ContactUs.html" target="_blank">Contact US </a>
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <hr class="footHr" />
+      </div>
 </body>
 
 </html>
