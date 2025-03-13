@@ -1,0 +1,263 @@
+/* About Page Specific Styles */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Why FarmsApp Section */
+.why-farmsapp {
+  text-align: center;
+  padding: 40px 0;
+  margin-bottom: 60px;
+}
+
+.why-farmsapp h1 {
+  color: #008c44;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.why-farmsapp p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #555;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Solutions Section */
+.solutions {
+  padding: 40px 0;
+}
+
+.solutions h1 {
+  color: #008c44;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.solutions-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.solution-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.solution-card.left {
+  flex-direction: row;
+}
+
+.solution-card.right {
+  flex-direction: row-reverse;
+}
+
+.solution-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.solution-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  border-radius: 8px;
+}
+
+.solution-content {
+  flex: 1;
+}
+
+.solution-content h2 {
+  color: #008c44;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.solution-content h3 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.solution-content p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Download App Section - Match to index.html */
+.download-app-section {
+  text-align: center;
+  background-color: #f0f8f4;
+  padding: 40px;
+  margin: 40px auto;
+  border-radius: 10px;
+  max-width: 800px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.download-container h2 {
+  color: #008c44;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.download-container p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.download-playstore img {
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.download-playstore img:hover {
+  transform: scale(1.05);
+}
+
+/* Header Specific Fixes */
+.header-container {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-container, .jaikisaan-logo {
+  flex: 1;
+}
+
+.logo-container img, .jaikisaan-img {
+  height: 40px;
+  width: auto;
+}
+
+.app-download {
+  display: flex;
+  align-items: center;
+}
+
+/* Footer Specific Fixes */
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.download-footer {
+  margin-top: 15px;
+}
+
+.download-button-footer {
+  display: inline-block;
+  background-color: #008c44;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.download-button-footer:hover {
+  background-color: #006c33;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .solution-card {
+      padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+      flex-wrap: wrap;
+      gap: 15px;
+  }
+  
+  .logo-container {
+      flex: 1;
+  }
+
+  .jaikisaan-logo {
+      order: 2;
+  }
+  
+  .nav-links {
+      order: 3;
+      width: 100%;
+      justify-content: center;
+  }
+  
+  .solution-card {
+      flex-direction: column !important;
+      padding: 20px;
+  }
+
+  .solution-image {
+      margin-bottom: 20px;
+  }
+
+  .solution-image img {
+      max-height: 200px;
+  }
+
+  .why-farmsapp h1,
+  .solutions h1 {
+      font-size: 2rem;
+  }
+
+  .why-farmsapp p {
+      font-size: 1.1rem;
+  }
+
+  .solution-content h2 {
+      font-size: 1.6rem;
+  }
+
+  .solution-content h3 {
+      font-size: 1.2rem;
+  }
+
+  .solution-content p {
+      font-size: 1rem;
+  }
+  
+  .footer-sections {
+      flex-direction: column;
+      gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .download-playstore img {
+      height: 40px;
+  }
+}
