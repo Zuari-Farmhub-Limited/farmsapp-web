@@ -17,9 +17,10 @@ app.get('/api/products', async (req, res) => {
     try {
         const response = await axios.get(`${process.env.API_BASE_URL}/kisaan/companion/v1/products`, {
             params: {
-                storeId: 3455,
+                storeId: 4454,
+                categories:"2,3,6",
                 channelId: 5,
-                pageSize: 10000
+                pageSize: 1000
             },
             headers: {
                 'Authorization': `Basic ${Buffer.from(`${process.env.API_USER}:${process.env.API_PASSWORD}`).toString('base64')}`,

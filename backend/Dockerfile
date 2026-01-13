@@ -1,5 +1,5 @@
-# Use the official Node.js image  
-FROM node:14  
+# Use Alpine-based Node.js image (much smaller)
+FROM node:14-alpine
 
 # Set the working directory  
 WORKDIR /usr/src/app 
@@ -7,11 +7,14 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json  
 COPY package*.json ./  
 
-# Install dependencies  
-RUN npm install  
+# Install only production dependencies  
+RUN npm install --production
 
 # Copy the rest of your application code  
-COPY . .  
+COPY . .
+
+# Copy environment variables
+COPY .env .env
 
 # Expose the port the app runs on  
 EXPOSE 5000
