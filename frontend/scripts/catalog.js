@@ -4,17 +4,28 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentPage = 1;
     let selectedSubcategory = 'all';
     let isLoading = false;
+    let searchQuery = '';
+    let allSkusData = [];
 
     const productsContainer = document.getElementById('products-container');
     const productsCount = document.getElementById('products-count');
     const loadingIndicator = document.getElementById('loading-indicator');
     const subcategoriesContainer = document.getElementById('subcategories-container');
     const templateElement = document.getElementById('product-card-template');
+    const searchInput = document.getElementById('searchInput');
 
     let productCardTemplate = templateElement ? templateElement.innerHTML : null;
     if (!productCardTemplate) {
         console.error('Product card template not found!');
         return;
+    }
+
+    // Search functionality
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            searchQuery = e.target.value.toLowerCase().trim();
+            filterProducts();
+        });
     }
 
     function formatPriceRange(price) {
@@ -124,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
             productsCount.textContent = `Showing ${allSkus.length} products`;
         }
 
+        allSkusData = allSkus;
         productsContainer.setAttribute('data-all-skus', JSON.stringify(allSkus));
         filterProducts();
     }
@@ -134,9 +146,23 @@ document.addEventListener('DOMContentLoaded', function () {
         const allSkus = JSON.parse(productsContainer.getAttribute('data-all-skus') || '[]');
         productsContainer.innerHTML = '';
 
-        const filteredSkus = selectedSubcategory === 'all'
+        // Filter by subcategory
+        let filteredSkus = selectedSubcategory === 'all'
             ? allSkus
             : allSkus.filter(item => item.subcategory.id.toString() === selectedSubcategory.toString());
+
+        // Filter by search query
+        if (searchQuery) {
+            filteredSkus = filteredSkus.filter(item => {
+                const productName = `${item.product.productName} - ${item.sku.skuSize} ${item.sku.skuUnit}`.toLowerCase();
+                const categoryName = item.subcategory.name.toLowerCase();
+                const description = (item.product.productDesc || '').toLowerCase();
+                
+                return productName.includes(searchQuery) || 
+                       categoryName.includes(searchQuery) || 
+                       description.includes(searchQuery);
+            });
+        }
 
         if (productsCount) {
             productsCount.textContent = `Showing ${filteredSkus.length} products`;

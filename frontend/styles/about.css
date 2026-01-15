@@ -2,42 +2,68 @@
 .about-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 50px 20px;
 }
 
 /* Why FarmsApp Section */
 .why-farmsapp {
   text-align: center;
-  padding: 40px 0;
+  padding: 50px 0;
   margin-bottom: 60px;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border-radius: 20px;
 }
 
 .why-farmsapp h1 {
-  color: #008c44;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  font-weight: 700;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.75rem;
+  margin-bottom: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #1f2937;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  font-weight: 600;
 }
 
 .why-farmsapp p {
-  font-size: 1.2rem;
+  font-size: 1.125rem;
   line-height: 1.7;
-  color: #555;
+  color: #6b7280;
   max-width: 900px;
   margin: 0 auto;
 }
 
 /* Solutions Section */
 .solutions {
-  padding: 40px 0;
+  padding: 50px 0;
 }
 
 .solutions h1 {
-  color: #008c44;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-size: 2.5rem;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   text-align: center;
-  font-weight: 700;
+  font-weight: 800;
+}
+
+.section-intro {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #6b7280;
+  margin-bottom: 40px;
+  font-weight: 600;
 }
 
 .solutions-wrapper {
@@ -197,13 +223,22 @@
 }
 
 @media (max-width: 768px) {
+  .about-container {
+    padding: 30px 15px;
+  }
+  
   .header-container {
       flex-wrap: wrap;
       gap: 15px;
+      padding: 10px 15px;
   }
   
   .logo-container {
       flex: 1;
+  }
+  
+  .logo {
+      height: 35px;
   }
 
   .jaikisaan-logo {
@@ -216,48 +251,427 @@
       justify-content: center;
   }
   
+  .nav-menu {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  .nav-item {
+    padding: 8px 14px;
+    font-size: 0.875rem;
+  }
+  
   .solution-card {
       flex-direction: column !important;
-      padding: 20px;
+      padding: 20px 15px;
+      gap: 20px;
   }
 
   .solution-image {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      width: 100%;
   }
 
   .solution-image img {
       max-height: 200px;
+      width: 100%;
+      object-fit: contain;
+  }
+  
+  .why-farmsapp {
+    padding: 30px 20px;
+    margin-bottom: 40px;
   }
 
   .why-farmsapp h1,
-  .solutions h1 {
-      font-size: 2rem;
+  .solutions h1,
+  .features-section h1,
+  .benefits-section h1,
+  .trust-section h1 {
+      font-size: 1.75rem;
+      line-height: 1.3;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.6;
   }
 
   .why-farmsapp p {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+  }
+  
+  .section-intro {
+    font-size: 1.05rem;
   }
 
   .solution-content h2 {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
   }
 
   .solution-content h3 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
   }
 
   .solution-content p {
-      font-size: 1rem;
+      font-size: 0.95rem;
+  }
+  
+  .solution-content ul li {
+    font-size: 0.95rem;
+    padding: 8px 0;
+  }
+  
+  .features-section,
+  .benefits-section {
+    padding: 40px 15px;
+    margin: 40px 0;
+  }
+  
+  .features-grid {
+    gap: 15px;
+    padding: 0 15px;
+  }
+  
+  .feature-item {
+    padding: 15px;
+  }
+  
+  .benefits-wrapper {
+    gap: 20px;
+  }
+  
+  .benefit-card {
+    padding: 20px 15px;
+  }
+  
+  .benefit-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .benefit-card p {
+    font-size: 0.95rem;
+  }
+  
+  .trust-section {
+    padding: 40px 20px;
+    margin: 40px 0;
+  }
+  
+  .trust-section p {
+    font-size: 1.05rem;
+    margin-bottom: 30px;
   }
   
   .footer-sections {
       flex-direction: column;
       gap: 30px;
   }
+  
+  /* Mobile navigation */
+  .download-button-header {
+    padding: 8px 14px;
+    font-size: 0.875rem;
+  }
 }
 
 @media (max-width: 600px) {
+  .features-grid,
+  .benefits-wrapper {
+    grid-template-columns: 1fr;
+    padding: 0 15px;
+  }
+  
+  .trust-stats {
+    gap: 25px;
+  }
+  
+  .stat-item h2 {
+    font-size: 2.5rem;
+  }
+  
+  .stat-item p {
+    font-size: 1rem;
+  }
+  
   .download-playstore img {
       height: 40px;
   }
 }
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 20px 10px;
+  }
+  
+  .why-farmsapp {
+    padding: 20px 15px;
+  }
+  
+  .why-farmsapp h1,
+  .solutions h1,
+  .features-section h1,
+  .benefits-section h1,
+  .trust-section h1 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .why-farmsapp p,
+  .solution-content p {
+    font-size: 0.9rem;
+  }
+  
+  .solution-card {
+    padding: 15px 12px;
+  }
+  
+  .solution-image img {
+    max-height: 150px;
+  }
+  
+  .solution-content h2 {
+    font-size: 1.2rem;
+  }
+  
+  .solution-content h3 {
+    font-size: 1rem;
+  }
+  
+  .features-section,
+  .benefits-section,
+  .trust-section {
+    padding: 30px 15px;
+  }
+  
+  .feature-item {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .benefit-card {
+    padding: 18px 12px;
+  }
+  
+  .trust-section h1 {
+    font-size: 1.75rem;
+  }
+  
+  .trust-section p {
+    font-size: 0.95rem;
+  }
+  
+  .stat-item h2 {
+    font-size: 2rem;
+  }
+  
+  .stat-item p {
+    font-size: 0.9rem;
+  }
+  
+  .nav-item {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* New Sections Styles */
+.solution-content ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.solution-content ul li {
+  padding: 10px 0;
+  padding-left: 30px;
+  position: relative;
+  color: #1f2937;
+  font-size: 1.05rem;
+}
+
+.solution-content ul li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Features Section */
+.features-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border-radius: 20px;
+  margin: 60px 0;
+}
+
+.features-section h1 {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.feature-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: #10b981;
+}
+
+.feature-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.feature-item p {
+  margin: 0;
+  color: #1f2937;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Benefits Section */
+.benefits-section {
+  padding: 60px 0;
+}
+
+.benefits-section h1 {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.benefits-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  border-color: #10b981;
+}
+
+.benefit-card h3 {
+  color: #10b981;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.benefit-card p {
+  color: #6b7280;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Trust Section */
+.trust-section {
+  padding: 60px 40px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  margin: 60px 0;
+}
+
+.trust-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 24px;
+  font-weight: 800;
+  color: white;
+}
+
+.trust-section p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto 50px;
+  opacity: 0.95;
+}
+
+.trust-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px;
+}
+
+.stat-item h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.stat-item p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 600;
+}
+
