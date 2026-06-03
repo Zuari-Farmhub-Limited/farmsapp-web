@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply font-sans bg-surface text-gray-900;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  .text-balance { text-wrap: balance; }
+
+  /* Smooth press feel on touch */
+  .press-scale {
+    transition: transform 0.12s ease;
+  }
+  .press-scale:active { transform: scale(0.97); }
+}
