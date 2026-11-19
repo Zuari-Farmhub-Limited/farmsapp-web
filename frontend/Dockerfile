@@ -8,6 +8,7 @@ COPY ./images/  /usr/share/nginx/html/images/
 # COPY ../images/  /usr/share/nginx/html/images/ 
 COPY ./pages/  /usr/share/nginx/html/pages/
 COPY ./scripts/  /usr/share/nginx/html/scripts/ 
+COPY ./googled04e82c68119b5d6.html /usr/share/nginx/html/googled04e82c68119b5d6.html
 
 
 
